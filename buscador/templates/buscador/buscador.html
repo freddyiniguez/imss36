@@ -1,0 +1,20 @@
+{% extends 'buscador/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<!-- Main -->
+	<section id="main" class="wrapper">
+		<div class="container">
+
+			<section>
+				<h3>Resultado de la búsqueda</h3>
+				<p>{{ result }}</p>
+				<p>{{ mensaje }}</p>
+				<a href="{% url 'home' %}" class="button special"><i class="fa fa-arrow-left"></i>  Buscar de nuevo</a>
+			</section>
+
+		</div>
+	</section>
+
+{% endblock %}

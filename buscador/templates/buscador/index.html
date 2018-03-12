@@ -1,0 +1,29 @@
+{% extends 'buscador/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<!-- Main -->
+	<section id="main" class="wrapper">
+		<div class="container">
+
+			<section>
+				<h3>Buscador de citas médicas</h3>
+				<form method="GET" action="{% url 'buscador' %}">
+					<div class="row uniform 50%">
+						<div class="12u 12u$(xsmall)">
+							<input type="text" name="name" id="name" placeholder="Nombre del paciente" />
+						</div>
+						<div class="12u$">
+							<ul class="actions">
+								<li><button type="submit" class="special"><i class="fa fa-search"></i> Buscar cita</button></li>
+							</ul>
+						</div>
+					</div>
+				</form>
+			</section>
+
+		</div>
+	</section>
+
+{% endblock %}
