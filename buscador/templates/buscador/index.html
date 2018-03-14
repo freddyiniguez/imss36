@@ -6,9 +6,10 @@
 <!-- Main -->
 	<section id="main" class="wrapper">
 		<div class="container">
-
+		<br>
 			<section>
 				<h3>Buscador de citas médicas</h3>
+				<p style="color:red;">{{ mensaje }}	</p>
 				<form method="GET" action="{% url 'buscador' %}">
 					<div class="row uniform 50%">
 						<div class="12u 12u$(xsmall)">
@@ -21,6 +22,72 @@
 						</div>
 					</div>
 				</form>
+			</section>
+			<br>
+			<br>
+			<br>
+			<section>
+				<h3>Todas las citas médicas</h3>
+				<div class="table-wrapper">
+					<table>
+						<thead>
+							<tr>
+								<td><strong>Nombre</strong></td>
+								<td><strong>NSS</strong></td>
+								<td><strong>DX</strong></td>
+								<td><strong>Lugar</strong></td>
+								<td><strong>Especialidad</strong></td>
+								<td><strong>Fecha cita</strong></td>
+								<td><strong>Estatus</strong></td>
+							</tr>
+						</thead>
+						<tbody>
+							{% for cita in citas %}
+								<tr>
+									<td>{{ cita.nombre }}</td>
+									<td>{{ cita.nss }}</td>
+									<td>{{ cita.dx }}</td>
+									<td>{{ cita.lugar }}</td>
+									<td>{{ cita.especialidad }}</td>
+									<td>{{ cita.fecha_cita }}</td>
+									<td>{{ cita.status }}</td>
+								</tr>
+							{% empty %}
+								<tr>
+									<td>Ingrese su nombre y de clic en el botón de <strong>Buscar cita</strong>.</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+
+					{% if citas.has_other_pages %}
+						<ul class="pagination">
+							{% if citas.has_previous %}
+								<li><a href="?page={{ citas.previous_page_number }}">&laquo;</a></li>
+							{% else %}
+								<li class="disabled"><span>&laquo;</span></li>
+							{% endif %}
+							{% for i in citas.paginator.page_range %}
+								{% if citas.number == i %}
+									<li class="active"><span>{{ i }} <span class="sr-only"></span></span></li>
+								{% else %}
+									<li><a href="?page={{ i }}">{{ i }}</a></li>
+								{% endif %}
+							{% endfor %}
+							{% if citas.has_next %}
+								<li><a href="?page={{ citas.next_page_number }}">&raquo;</a></li>
+							{% else %}
+								<li class="disabled"><span>&raquo;</span></li>
+							{% endif %}
+						</ul>
+					{% endif %}
+				</div>
 			</section>
 
 		</div>

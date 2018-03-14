@@ -9,8 +9,48 @@
 
 			<section>
 				<h3>Resultado de la búsqueda</h3>
-				<p>{{ result }}</p>
-				<p>{{ mensaje }}</p>
+				<p style="color:red">{{ mensaje }}</p>
+
+				<div class="table-wrapper">
+					<table>
+						<thead>
+							<tr>
+								<td><strong>Nombre</strong></td>
+								<td><strong>NSS</strong></td>
+								<td><strong>DX</strong></td>
+								<td><strong>Lugar</strong></td>
+								<td><strong>Especialidad</strong></td>
+								<td><strong>Fecha cita</strong></td>
+								<td><strong>Estatus</strong></td>
+							</tr>
+						</thead>
+						<tbody>
+							{% for cita in citas %}
+								<tr>
+									<td>{{ cita.nombre }}</td>
+									<td>{{ cita.nss }}</td>
+									<td>{{ cita.dx }}</td>
+									<td>{{ cita.lugar }}</td>
+									<td>{{ cita.especialidad }}</td>
+									<td>{{ cita.fecha_cita }}</td>
+									<td>{{ cita.status }}</td>
+								</tr>
+							{% empty %}
+								<tr>
+									<td>Sin resultados</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+
+				</div>
+				
 				<a href="{% url 'home' %}" class="button special"><i class="fa fa-arrow-left"></i>  Buscar de nuevo</a>
 			</section>
 

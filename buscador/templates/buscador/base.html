@@ -26,6 +26,13 @@
 						<li><a href="{% url 'home' %}">Buscador</a></li>
 						<li><a href="{% url 'admin:index' %}">Admin</a></li>
 						<li><a href="{% url 'importar' %}">Importar</a></li>
+						<li>
+							{% if user.is_authenticated %}
+								<p>{{ user.username }} <small>(<a href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i></a>)</small></p>
+							{% else %}
+								<p>Ingresar <small>(<a href="{% url 'login' %}"><i class="fa fa-sign-in" aria-hidden="true"></i></a>)</small></p>
+							{% endif %}
+						</li>
 					</ul>
 				</nav>
 				
