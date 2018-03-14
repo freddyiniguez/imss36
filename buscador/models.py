@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from django.utils.encoding import python_2_unicode_compatible
 from django.db import models
 
 # - - - C I T A - - - #
 # Contiene informacion de la cita medica
+
+@python_2_unicode_compatible
 class Cita(models.Model):
 	fecha_relacion = models.DateTimeField()
 	fecha_recibo = models.DateTimeField()

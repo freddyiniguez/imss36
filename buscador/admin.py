@@ -9,7 +9,7 @@ from .models import Cita
 class CitaResource(resources.ModelResource):
 	fecha_relacion = fields.Field(
 		attribute = 'fecha_relacion',
-		column_name = 'FECHA DE RELACION'
+		column_name = 'FECHA DE RELACIÓN'
 	)
 
 	fecha_recibo = fields.Field(
