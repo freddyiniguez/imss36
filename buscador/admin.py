@@ -7,16 +7,6 @@ from import_export import resources, fields
 from .models import Cita
 
 class CitaResource(resources.ModelResource):
-	fecha_relacion = fields.Field(
-		attribute = 'fecha_relacion',
-		column_name = 'FECHA DE RELACIÓN'
-	)
-
-	fecha_recibo = fields.Field(
-		attribute = 'fecha_recibo',
-		column_name = 'FECHA DE RECIBIDO'
-	)
-
 	nombre = fields.Field(
 		attribute = 'nombre',
 		column_name = 'NOMBRE DEL PACIENTE'
@@ -25,11 +15,6 @@ class CitaResource(resources.ModelResource):
 	nss = fields.Field(
 		attribute = 'nss',
 		column_name = 'No. DE AFILIACION'
-	)
-
-	dx = fields.Field(
-		attribute = 'dx',
-		column_name = 'DIAGNOSTICO'
 	)
 
 	lugar = fields.Field(
@@ -47,12 +32,17 @@ class CitaResource(resources.ModelResource):
 		column_name = 'FECHA DE CITA'
 	)
 
+	status = fields.Field(
+		attribute = 'status',
+		column_name = 'ESTATUS'
+	)
+
 	def get_instance(self, instance_loader, row):
 		return False
 
 	class Meta:
 		model = Cita
-		fields = ('fecha_relacion', 'fecha_recibo', 'nombre', 'nss', 'dx', 'lugar', 'especialidad', 'fecha_cita')
+		fields = ('nombre', 'nss', 'lugar', 'especialidad', 'fecha_cita', 'status')
 		export_order = fields
 
 class CitaAdmin(ImportMixin, admin.ModelAdmin):

@@ -8,15 +8,12 @@ from django.db import models
 
 @python_2_unicode_compatible
 class Cita(models.Model):
-	fecha_relacion = models.DateTimeField()
-	fecha_recibo = models.DateTimeField()
-	nombre = models.CharField(max_length = 100)
-	nss = models.CharField(max_length = 50)
-	dx = models.CharField(max_length = 200)
-	lugar = models.CharField(max_length = 200, blank=True)
-	especialidad = models.CharField(max_length = 200, blank=True)
-	fecha_cita = models.TextField(blank=True)
-	status = models.CharField(max_length = 250, blank=True)
+	nombre = models.TextField(blank=True, null=True)
+	nss = models.TextField(blank=True, null=True)
+	lugar = models.TextField(blank=True, null=True)
+	especialidad = models.TextField(blank=True, null=True)
+	fecha_cita = models.TextField(blank=True, null=True)
+	status = models.TextField(blank=True, null=True)
 
 	def __str__(self):
 		return self.nombre

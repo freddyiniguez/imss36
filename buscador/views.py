@@ -3,23 +3,13 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Cita
 
 
 # - - - H O M E - - - #
 # Pantalla de inicio
 def home(request):
-	citas_list = Cita.objects.all()
-	page = request.GET.get('page', 1)
-	paginator = Paginator(citas_list, 5)
-	try:
-		citas = paginator.page(page)
-	except PageNotAnInteger:
-		citas = paginator.page(1)
-	except EmptyPage:
-		citas = paginator.page(paginator.num_pages)
-	return render(request, 'buscador/index.html', {'citas': citas, 'mensaje': ''})
+	return render(request, 'buscador/index.html', {'mensaje': ''})
 
 
 # - - - B U S C A D O R - - - #
